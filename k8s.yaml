@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-a
+  template:
+    metadata:
+      labels:
+        app: server-a
+    spec:
+      containers:
+        - name: server-a
+          image:  docker.io/yuhaibao/aws-server-a:1.0.18
+          env:
+            - name: AUTHOR
+              value: server-a
+          ports:
+            - containerPort: 7022
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-a
+spec:
+  ports:
+    - port: 7022
+      protocol: TCP
+      targetPort: 7022
+  type: ClusterIP
+  selector:
+    app: server-a
