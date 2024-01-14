@@ -13,7 +13,7 @@ RUN bash -c 'touch /agent/config/agent.config'
 
 RUN bash -c 'ls /'
 
-ARG DEAULT_OPTS='-javaagent:/agent/skywalking-agent.jar -Dskywalking_config=/agent/config/agent.config -Dskywalking.agent.service_name=server-a -Dskywalking.collector.backend_service=172.20.227.134:11800'
+ARG DEAULT_OPTS='-javaagent:/agent/skywalking-agent.jar -Dskywalking_config=/agent/config/agent.config -Dskywalking.agent.service_name=server-a -Dskywalking.collector.backend_service=18.212.19.251:11800'
 ENV JAVA_OPTS=$DEAULT_OPTS
 
 
